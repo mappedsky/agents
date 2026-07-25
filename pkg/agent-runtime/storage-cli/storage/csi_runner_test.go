@@ -189,7 +189,7 @@ func TestRunNodePublishVolumeAppliesTimeout(t *testing.T) {
 	assert.Equal(t, int32(1), fake.calls.Load())
 }
 
-// TestNewCSIClient exercises the real grpc.Dial path. Dial is lazy in gRPC,
+// TestNewCSIClient exercises the real grpc.NewClient path. NewClient is lazy in gRPC,
 // so it returns a usable client even when the underlying socket file does
 // not exist; we only assert the happy-path invariants here.
 func TestNewCSIClient(t *testing.T) {
