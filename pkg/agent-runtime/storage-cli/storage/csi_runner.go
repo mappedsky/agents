@@ -81,7 +81,7 @@ func RunNodePublishVolume(ctx context.Context, driver string, req csi.NodePublis
 
 // newCSIClient opens a unix-socket gRPC connection to a CSI plugin.
 func newCSIClient(socketPath string) (csi.NodeClient, *grpc.ClientConn, error) {
-	conn, err := grpc.Dial(
+	conn, err := grpc.NewClient(
 		socketPath,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithContextDialer(func(_ context.Context, addr string) (net.Conn, error) {
